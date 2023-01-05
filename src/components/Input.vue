@@ -5,7 +5,7 @@ export default {
 </script>
 
 <template>
-  <input @input="$emit('onChangeInput', $event.target.value)" type="text" />
+  <input @keyup.enter="$emit('onChangeInput', $event.target.value)" type="text" />
 </template>
 
 <style scoped>
