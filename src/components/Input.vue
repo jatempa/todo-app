@@ -1,16 +1,16 @@
 <script>
-export default {};
+export default {
+  emits: ['onChangeInput'],
+};
 </script>
 
 <template>
-  <input v-model="item" type="text" />
+  <input @input="$emit('onChangeInput', $event.target.value)" type="text" />
 </template>
 
 <style scoped>
 input {
   font-size: 2rem;
   outline: none;
-  line-height: 8px;
-  vertical-align: baseline;
 }
 </style>
