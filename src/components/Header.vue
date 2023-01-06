@@ -1,14 +1,5 @@
-<script>
-export default {
-  props: {
-    title: {
-      type: String,
-      required: true,
-    },
-  },
-};
-</script>
-
 <template>
-  <h1>{{ title }}</h1>
+  <h1>
+    <slot />
+  </h1>
 </template>

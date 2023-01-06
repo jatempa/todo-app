@@ -35,7 +35,7 @@ export default {
 
 <template>
   <Card>
-    <Header title="Todo" />
+    <Header>To Do</Header>
     <CustomTaskInput @handle-change="handleChange" />
     <ItemList :items="items" />
   </Card>
