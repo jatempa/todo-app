@@ -30,8 +30,4 @@ input {
   border: 0px;
   outline: none;
 }
-
-/* input:focus {
-  outline-color: blue;
-} */
 </style>
