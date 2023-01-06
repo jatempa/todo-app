@@ -10,7 +10,7 @@ export default {
 </script>
 
 <template>
-  <span>{{ item.description }}</span>
+  <span>{{ item.title }}</span>
 </template>
 
 <style scoped>

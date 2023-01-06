@@ -21,10 +21,10 @@ export default {
     handleChange(item) {
       if (!item || item.length === 0) return;
 
-      const id = uuidv4();
       const newItem = {
-        id,
-        description: item,
+        id: uuidv4(),
+        title: item,
+        done: false,
       };
 
       this.items.push(newItem);
