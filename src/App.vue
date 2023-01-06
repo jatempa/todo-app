@@ -24,7 +24,7 @@ export default {
       const id = uuidv4();
       const newItem = {
         id,
-        item,
+        description: item,
       };
 
       this.items.push(newItem);

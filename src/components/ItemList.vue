@@ -1,5 +1,10 @@
 <script>
+import Item from './Item.vue';
+
 export default {
+  components: {
+    Item,
+  },
   props: {
     items: {
       type: Array,
@@ -12,7 +17,21 @@ export default {
 <template>
   <ul>
     <li v-for="item in items" :key="item.id">
-      {{ item }}
+      <Item :item="item" />
     </li>
   </ul>
 </template>
+
+<style scoped>
+ul {
+  padding: 0px;
+}
+
+li {
+  padding: 0px;
+  text-align: left;
+  list-style-position: inside;
+  list-style-type: decimal;
+  font-size: 1.5rem;
+}
+</style>
