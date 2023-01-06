@@ -44,10 +44,4 @@ li {
   font-size: 1.5rem;
   margin-bottom: 15px;
 }
-
-.item-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
 </style>
