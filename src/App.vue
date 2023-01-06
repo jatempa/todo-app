@@ -1,9 +1,10 @@
 <script>
+import { v4 as uuidv4 } from 'uuid';
 import Card from './components/Card.vue';
 import Header from './components/Header.vue';
 import CustomTaskInput from './components/CustomTaskInput.vue';
 import ItemList from './components/ItemList.vue';
-import { v4 as uuidv4 } from 'uuid';
+import Results from './components/Results.vue';
 
 export default {
   components: {
@@ -11,6 +12,7 @@ export default {
     CustomTaskInput,
     Header,
     ItemList,
+    Results,
   },
   data() {
     return {
@@ -30,6 +32,18 @@ export default {
       this.items.push(newItem);
     },
   },
+  computed: {
+    tasksByStatus() {
+      const complete = this.items.filter((item) => item.done).length;
+      const incomplete = this.items.length - complete;
+
+      return {
+        all: this.items.length,
+        complete,
+        incomplete,
+      };
+    },
+  },
 };
 </script>
 
@@ -38,5 +52,6 @@ export default {
     <Header>To Do</Header>
     <CustomTaskInput @handle-change="handleChange" />
     <ItemList :items="items" />
+    <Results :tasks="tasksByStatus" />
   </Card>
 </template>
