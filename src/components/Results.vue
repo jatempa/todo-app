@@ -23,6 +23,6 @@ export default {
 <style scoped>
 .container {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 </style>
