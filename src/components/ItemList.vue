@@ -14,8 +14,8 @@ export default {
     },
   },
   methods: {
-    updateStatus(item) {
-      const index = this.items.findIndex((i) => i.id === item.id);
+    updateStatus(id) {
+      const index = this.items.findIndex((item) => item.id === id);
       this.items[index].done = !this.items[index].done;
     },
   },
@@ -26,7 +26,7 @@ export default {
   <ul>
     <li class="item-container" v-for="item in items" :key="item.id">
       <Item :item="item" />
-      <Mark :item="item" @update-status="updateStatus" />
+      <Mark :done="item.done" @click="updateStatus(item.id)" />
     </li>
   </ul>
 </template>

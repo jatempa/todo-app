@@ -1,21 +1,16 @@
 <script>
 export default {
   props: {
-    item: {
-      type: Object,
+    done: {
+      type: Boolean,
       required: true,
     },
   },
-  emits: ['update-status'],
 };
 </script>
 
 <template>
-  <div
-    class="box"
-    @click="$emit('update-status', item)"
-    :class="this.item.done ? 'done' : ''"
-  />
+  <div class="box" :class="this.done ? 'done' : ''" />
 </template>
 
 <style scoped>
@@ -24,6 +19,7 @@ export default {
   width: 30px;
   background-color: rgb(236, 233, 233);
 }
+
 .done {
   background-color: yellowgreen;
 }
