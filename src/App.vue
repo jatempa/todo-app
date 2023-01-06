@@ -1,22 +1,33 @@
 <script>
 import Card from './components/Card.vue';
 import Header from './components/Header.vue';
-import Input from './components/Input.vue';
+import CustomTaskInput from './components/CustomTaskInput.vue';
+import ItemList from './components/ItemList.vue';
+import { v4 as uuidv4 } from 'uuid';
 
 export default {
   components: {
     Card,
+    CustomTaskInput,
     Header,
-    Input,
+    ItemList,
   },
   data() {
     return {
-      message: 'x',
+      items: [],
     };
   },
   methods: {
-    handleUpdate(item) {
-      console.log(item);
+    handleChange(item) {
+      if (!item || item.length === 0) return;
+
+      const id = uuidv4();
+      const newItem = {
+        id,
+        item,
+      };
+
+      this.items.push(newItem);
     },
   },
 };
@@ -24,7 +35,8 @@ export default {
 
 <template>
   <Card>
-    <Header title="Todo List" />
-    <Input v-model="message" @onChangeInput="handleUpdate" />
+    <Header title="Todo" />
+    <CustomTaskInput @handle-change="handleChange" />
+    <ItemList :items="items" />
   </Card>
 </template>
