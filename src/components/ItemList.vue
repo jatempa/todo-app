@@ -17,7 +17,7 @@ const updateStatus = (id) => {
 
 <template>
   <ul>
-    <li class="item-container" v-for="item in props.items" :key="item.id">
+    <li class="item-container" v-for="item in items" :key="item.id">
       <Item :item="item" />
       <Mark :done="item.done" @click="updateStatus(item.id)" />
     </li>
