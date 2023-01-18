@@ -1,12 +1,12 @@
-<script>
-export default {
-  props: {
-    tasks: {
-      type: Object,
-      required: true,
-    },
+<script setup>
+import { defineProps } from 'vue';
+
+const props = defineProps({
+  tasks: {
+    type: Object,
+    required: true,
   },
-};
+});
 </script>
 
 <template>

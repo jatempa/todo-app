@@ -1,12 +1,12 @@
-<script>
-export default {
-  props: {
-    item: {
-      type: Object,
-      required: true,
-    },
+<script setup>
+import { defineProps } from 'vue';
+
+const props = defineProps({
+  item: {
+    type: Object,
+    required: true,
   },
-};
+});
 </script>
 
 <template>

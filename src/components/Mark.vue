@@ -1,12 +1,12 @@
-<script>
-export default {
-  props: {
-    done: {
-      type: Boolean,
-      required: true,
-    },
+<script setup>
+import { defineProps } from 'vue';
+
+const props = defineProps({
+  done: {
+    type: Boolean,
+    required: true,
   },
-};
+});
 </script>
 
 <template>

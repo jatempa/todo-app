@@ -1,59 +1,48 @@
-<script>
+<script setup>
+import { computed } from '@vue/reactivity';
 import { v4 as uuidv4 } from 'uuid';
+import { reactive } from 'vue';
 import Card from './components/Card.vue';
-import Header from './components/Header.vue';
 import CustomInput from './components/CustomInput.vue';
+import Header from './components/Header.vue';
 import ItemList from './components/ItemList.vue';
 import Results from './components/Results.vue';
 
-export default {
-  components: {
-    Card,
-    CustomInput,
-    Header,
-    ItemList,
-    Results,
-  },
-  data() {
-    return {
-      items: [],
-      task: '',
-    };
-  },
-  methods: {
-    handleChange() {
-      if (this.task.length === 0) return;
+const state = reactive({
+  items: [],
+  task: '',
+});
 
-      const newItem = {
-        id: uuidv4(),
-        title: this.task,
-        done: false,
-      };
+const handleChange = () => {
+  if (state.task.length === 0) return;
 
-      this.items.push(newItem);
-      this.task = '';
-    },
-  },
-  computed: {
-    tasksByStatus() {
-      const complete = this.items.filter((item) => item.done).length;
-      const incomplete = this.items.length - complete;
+  const newItem = {
+    id: uuidv4(),
+    title: state.task,
+    done: false,
+  };
 
-      return {
-        all: this.items.length,
-        complete,
-        incomplete,
-      };
-    },
-  },
+  state.items.push(newItem);
+  state.task = '';
 };
+
+const tasksByStatus = computed(() => {
+  const complete = state.items.filter((item) => item.done).length;
+  const incomplete = state.items.length - complete;
+
+  return {
+    all: state.items.length,
+    complete,
+    incomplete,
+  };
+});
 </script>
 
 <template>
   <Card>
     <Header>To Do</Header>
-    <CustomInput v-model="task" @handle-change="handleChange" />
-    <ItemList :items="items" />
+    <CustomInput v-model="state.task" @handle-change="handleChange" />
+    <ItemList :items="state.items" />
     <Results :tasks="tasksByStatus" />
   </Card>
 </template>

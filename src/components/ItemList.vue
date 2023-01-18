@@ -1,30 +1,24 @@
-<script>
+<script setup>
+import { defineProps } from 'vue';
 import Item from './Item.vue';
 import Mark from './Mark.vue';
 
-export default {
-  components: {
-    Item,
-    Mark,
+const props = defineProps({
+  items: {
+    type: Array,
+    required: true,
   },
-  props: {
-    items: {
-      type: Array,
-      required: true,
-    },
-  },
-  methods: {
-    updateStatus(id) {
-      const index = this.items.findIndex((item) => item.id === id);
-      this.items[index].done = !this.items[index].done;
-    },
-  },
+});
+
+const updateStatus = (id) => {
+  const index = props.items.findIndex((item) => item.id === id);
+  props.items[index].done = !props.items[index].done;
 };
 </script>
 
 <template>
   <ul>
-    <li class="item-container" v-for="item in items" :key="item.id">
+    <li class="item-container" v-for="item in props.items" :key="item.id">
       <Item :item="item" />
       <Mark :done="item.done" @click="updateStatus(item.id)" />
     </li>
