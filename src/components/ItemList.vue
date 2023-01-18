@@ -1,5 +1,4 @@
 <script setup>
-import { defineProps } from 'vue';
 import Item from './Item.vue';
 import Mark from './Mark.vue';
 
