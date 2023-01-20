@@ -41,7 +41,9 @@ const tasksByStatus = computed(() => {
 <template>
   <Card>
     <Header>To Do</Header>
-    <CustomInput v-model="state.task" @handle-change="handleChange" />
+    <form @submit.prevent="handleChange">
+      <CustomInput v-model="state.task" />
+    </form>
     <ItemList :items="state.items" />
     <Results :tasks="tasksByStatus" />
   </Card>

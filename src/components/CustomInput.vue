@@ -1,7 +1,7 @@
 <script>
 export default {
   props: ['modelValue'],
-  emits: ['update:modelValue', 'handle-change'],
+  emits: ['update:modelValue'],
 };
 </script>
 
@@ -9,7 +9,6 @@ export default {
   <input
     :value="modelValue"
     @input="$emit('update:modelValue', $event.target.value)"
-    @keyup.enter="$emit('handle-change')"
     placeholder="Enter your task ..."
   />
 </template>
